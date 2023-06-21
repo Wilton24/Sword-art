@@ -1,0 +1,248 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+  font-family: 'poppins', sans-serif;
+}
+:root{
+  --grey:#ccc;
+  --white:#fff;
+  --fb:#1876f2;
+  --gray:#efefef;
+  --navy-blue:#04487c;
+}
+body{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('../images/mihawk-background-hd.jpg') no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+/* ----------------Navigation--------- */
+.logo{
+  width:50px;
+  border-radius: 50%;
+  cursor:pointer;
+  transition:.3s ease-in-out;
+}
+.logo:hover{
+  /* transform:rotate(360deg); */
+  transform:scale(1.4);
+}
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  justify-content:space-between;
+  padding:12px 60px;
+  /* background:var(--grey); */
+}
+.navigation a{
+  position:relative;
+  text-decoration: none;
+  font-size:1.1em;
+  color:var(--white);
+  font-weight:500;
+  margin-left:40px;
+}
+.navigation a::after{
+  content:'';
+  background-color:var(--white);
+  position:absolute;
+  width:100%;
+  height:3px;
+  bottom:-6px;
+  left:0;
+  border-radius: 5px;
+  transform:scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+.navigation a:hover::after{
+  transform:scaleX(1);
+  transform-origin: left;
+}
+.btnLogin-popup{
+  width:120px;
+  height:50px;
+  background:transparent;
+  border:2px solid var(--white);
+  font-size:18px;
+  color:var(--white);
+  margin-left:20px;
+  border-radius: 10px;
+  cursor:pointer;
+  font-weight:500;
+  transition:all 0.4s ease;
+}
+.btnLogin-popup:hover{
+  color:var(--navy-blue);
+  background:var(--white);
+  transform:scale(1.1);
+}
+.wrapper{
+  position: relative;
+  width:400px;
+  height:420px;
+  /* padding:5px 20px; */
+  border:2px solid rgba(255,255,255,.5);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 30px rgba(0,0,0,.5);
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  transform:scale(0);
+  overflow: hidden;
+  transition: height .2s ease, transform .2s ease;
+}
+.wrapper.active{
+  height:500px;
+}
+.wrapper.active-popup{
+  transform:scale(1);
+}
+
+.wrapper .form-box{
+  width:100%;
+  padding:40px;
+}
+.wrapper .form-box.login{
+  transition:transform .18s ease;
+  transform:translateX(0);
+}
+.wrapper.active .form-box.login{
+  transition:none;
+  transform:translateX(-400px);
+}
+.wrapper .form-box.register{
+  position: absolute;
+  transition:none;
+  transform:translateX(400px);
+}
+.wrapper.active .form-box.register{
+  transform:translateX(0);
+  transition:transform .18s ease;
+}
+.form-box h2{
+  font-size: 2em;
+  color:var(--navy-blue);
+  text-align:center;
+}
+.form-box .icon{
+  color:var(--navy-blue);
+}
+.input-box{
+  position:relative;
+  width:100%;
+  height: 50px;
+  border-bottom: 2px solid var(--navy-blue);
+  margin:30px 0;
+}
+.input-box label{
+  position:absolute;
+  top:50%;
+  left:5px;
+  transform:translateY(-50%);
+  font-size:1em;
+  color:var(--navy-blue);
+  font-weight: 500;
+  pointer-events:none;
+}
+.input-box input:focus~label,
+.input-box input:valid~label{
+  top:0;
+}
+
+.input-box input{
+  width:100%;
+  height:100%;
+  background:transparent;
+  border:none;
+  outline: none;
+  font-size: 1em;
+  color: var(--navy-blue);
+  font-weight: 600;
+  padding:0 35px 0 5px;
+}
+.input-box .icon{
+  position:absolute;
+  right:8px;
+  font-size: 1.2em;
+  line-height: 57px;
+}
+.remember-forget{
+  font-size: .9em;
+  color:var(--navy-blue);
+  font-weight: 500;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:-10px 0 20px;
+}
+.remember-forget a{
+  text-decoration: none;
+  color:var(--navy-blue);
+}
+.remember-forget label input{
+  accent-color: rgb(252, 56, 89);
+  margin-right:10px;
+}
+.remember-forget a:hover{
+  text-decoration:underline;
+  transform:scale(1.1);
+}
+.btn{
+  width:100%;
+  background:var(--navy-blue);
+  padding:10px;
+  border:none;
+  outline:none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 1em;
+  cursor:pointer;
+  font-weight: 600;
+  color:var(--white);
+}
+.login-register{
+  color:var(--navy-blue);
+  font-size:.9em;
+  text-align:center;
+  font-weight: 500;
+}
+.login-register p a{
+  text-decoration: none;
+  color:var(--navy-blue);
+  font-weight: 600;
+}
+.login-register a:hover{
+  text-decoration: underline;
+}
+.close-icon{
+  position:absolute;
+  top:0px;
+  right:0px;
+  height:40px;
+  width:40px;
+  background:var(--navy-blue);
+  font-size:1.2em;
+  color:var(--white);
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  cursor:pointer;
+  border-radius: 5px;
+  z-index:100;
+}
+/* ------- Terms & Conditions ----------- */
+.terms-and-conditions{
+  text-decoration: underline;
+  font-weight:600;
+}
